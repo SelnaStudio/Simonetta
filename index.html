@@ -261,7 +261,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   display: block;
   border-bottom: 1px solid var(--border);
 }
-.nav-mobile .btn-primary { margin-top: 0.75rem; text-align: center; justify-content: center; }
+.nav-mobile .btn-primary { margin-top: 0.75rem; text-align: center; justify-content: center; color: #fff; }
 
 @media (max-width: 768px) {
   .nav-links, .btn-nav-desk { display: none; }
@@ -1357,10 +1357,11 @@ a:focus-visible, button:focus-visible {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('in');
-          obs.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove('in');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     els.forEach(function (el) { obs.observe(el); });
   } else {
     els.forEach(function (el) { el.classList.add('in'); });
